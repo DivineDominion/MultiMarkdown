@@ -354,3 +354,12 @@ input[type="button"],
 .footnotes ol {
 	list-style-position: inside;
 }
+
+sup.footnote {
+	line-height: 0px;
+}
+
+/* ease clickability */
+sup.footnote a {
+	padding: 0.3em;
+}

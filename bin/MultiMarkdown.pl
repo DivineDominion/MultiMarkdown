@@ -1830,11 +1830,13 @@ sub _DoFootnotes {
 		my $id = id2footnote($1);
 		if (defined $g_footnotes{$id} ) {
 			$g_footnote_counter++;
+			$result .= "<sup class=\"footnote\">";
 			if ($g_footnotes{$id} =~ /^(<p>)?glossary:/i) {
-				$result = "<a href=\"#fn:$id\" id=\"fnref:$id\" title=\"see glossary\" class=\"footnote glossary\">$g_footnote_counter</a>";
+				$result .= "<a href=\"#fn:$id\" id=\"fnref:$id\" title=\"see glossary\" class=\"footnote glossary\">$g_footnote_counter</a>";
 			} else {
-				$result = "<a href=\"#fn:$id\" id=\"fnref:$id\" title=\"see footnote\" class=\"footnote\">$g_footnote_counter</a>";
+				$result .= "<a href=\"#fn:$id\" id=\"fnref:$id\" title=\"see footnote\" class=\"footnote\">$g_footnote_counter</a>";
 			}
+			$result .= "</sup>";
 			push (@g_used_footnotes,$id);
 		}
 		$result;
