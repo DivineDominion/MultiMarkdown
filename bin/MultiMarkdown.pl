@@ -17,7 +17,6 @@
 # Based on Markdown.pl 1.0.2b8 -  Wed 09 May 2007
 #
 #
-#   TODO: allow multiple xslt file references
 #	TODO: Change math mode delimiter?
 #	TODO: Still need to get the glossary working in non-memoir documents
 #	TODO: A mechanism to include arbitrary code (LaTeX, etc) without being "ugly"
@@ -749,6 +748,22 @@ sub _DoAnchors {
 			}
 			$result .= _DoAttributes($label);
 			$result .= ">$link_text</a>";
+		} elsif ($link_id =~ /^\§/) {
+			#
+			# ZETTELKASTEN Link Processing
+			#
+			$link_id=~ s/\§//g;
+			my $loc = $ENV{"ZETTELKASTEN"} || expand_tilde("~/Archiv/");
+			my $filename = `ls -C $loc | grep -o --colour=never "^${link_id}_.*"`;
+			$filename =~ s/\n|\r//sg;
+			$filename =~ s/ /%20/g;
+			$filename =~ s/=/%3D/g;
+			$filename =~ s/\+/%2B/g;
+			# $filename =~ s/\.md/\.html/;
+			my $url = "txmt://open?url=file://". $loc . $filename; # Zettelkasten Link
+			$result = "<a href=\"$url\"";
+			$result .= ">$link_text</a>";
+
 		} else {
 			$result = $whole_match;
 		}
