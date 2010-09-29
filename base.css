@@ -28,7 +28,7 @@ header, nav, article, footer, aside, address, section	 { display: block; }
  * note that there is no font-size declaration set in this rule. If you wish to include one, you should use font-size: 100.01% to prevent bugs in IE and Opera
  */
 html {
-/* 	height: 100%; */
+  height: 100%;
   overflow-y: scroll;
   font-size: 100.01%;
 }
@@ -37,7 +37,7 @@ html {
  * line-height is to ensure that text is legible enough (that there is enough space between the upper and lower line) 
  */	
 body {
-/* 	height: 100%; */
+/*  height: 100%;*/
 /*  font-size: 0.8125em; */
   line-height: 1.618em;  /* 13px, golden rule line-height */
   font-size-adjust:none;
@@ -78,9 +78,9 @@ h2, h3, h4, h5 { font-weight: normal; }
  * outline:none used with the pseudo-class :hover is to avoid outline when a user clicks on links
  * note that these last rules do not do anything in IE as this browser does not support "outline"
  */
-a:link {color: #000;}
-a:visited {}
-a:hover {text-decoration: none;}
+a:link {text-decoration: none;border-bottom: 1px solid blue;/*color: #000;*/}
+a:visited {border-bottom-color:fuchsia;}
+a:hover {border-bottom-color: transparent;}
 a:focus {text-decoration: none;}
 a:focus,:focus {outline: 1px dotted #000;}
 a:hover,a:active {outline: none;}
@@ -94,10 +94,12 @@ a:hover,a:active {outline: none;}
 /* margin and padding values are reset for all these elements
  * you could remove from there elements you do not used in your documents, but I don't think it'd worth it 
  */
-body, p, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, blockquote, th, td {
+p, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, blockquote, th, td {
   margin: 0;
   padding: 0;
 }
+
+body { padding: 0.8125em 0; }
 
 /* this is to prevent border from showing around fieldsets and images (i.e., images inside anchors)
  */
@@ -228,11 +230,6 @@ dd {
   margin-top: .5em;
 }
 
-/* blockquote must be indented with margin to put the border visually on a line with all other indentations.
- * the sum total of border and padding is, again, 1.618em -- how everything else is indented, too.
- */
-blockquote { margin-left: 30px; border-left: 0.809em solid #ddd; padding-left: 0.809em;}
-
 /* we cannot use padding on a table to create left and right gaps (as we do with the elements above), instead we use margin 
  */ 
 table {
@@ -247,14 +244,19 @@ hr {
   margin-left: 30px;
   border-style: inset;
   border-width: 1px;
+  margin-bottom:1.618em;
 }
 
-/* top margin solution */
+/* same here for blockquote to display a decent border */
+blockquote { margin-left: 30px; border-left: 0.8125em solid #ddd; padding-left: 0.8125em;}
+
+/* --top-- bottom margin solution */
 /* this is my approach to create white space between elements, you do not have to adhere to it
  * rather than styling these elements with top and bottom margin, or simply bottom margin I only use top margin
  */
-h1, h2, h3, h4, h5, h6, pre, dt, li, hr, legend, input, button, textarea, select, address, table {margin-top: 1.2em;}
-p {margin-top: 0.8125em;}
+h1, h2, h3, h4, h5, h6 { margin-bottom: 5px;}
+pre, dl, legend, input, button, textarea, select, address, table { margin-bottom: 1.618em; }
+p { margin-bottom: 0.8125em; }
 
 /* top padding solution */
 /* this is a different approach which may be less frustrating for novice because it avoids running into collapsing margin and allows to clear floats while preserving space above the element
@@ -264,6 +266,8 @@ p {margin-top: 0.8125em;}
  h1, h2, h3, h4, h5, h6, p, pre, dt, dd, li, legend, address {padding-top: 1.2em;}
  hr, input, button, textarea, select, table {margin-top: 1.2em;}
  */
+
+address { margin-top:1.618em; font-style: italic; }
 
 
 /* * * * * *
@@ -275,7 +279,7 @@ p {margin-top: 0.8125em;}
 /* this should not affect the layout of the labels unless you style them in a way that padding applies
  * if I include this here it is mostly because when labels are styled with float and clear, top padding creates a gap between labels (bottom margin would, but not top margin)
  */
-label {padding-top: 1.2em;}
+label {padding-top: 1.618em;}
 
 /* line height helps to set the vertical alignment of radio buttons and check boxes (remember to group these in fieldsets) 
  */
@@ -330,7 +334,7 @@ input[type="button"],
  */
 .block {
   padding: 0 30px;
-  margin-top: 1.2em;
+  margin-top: 1.618em;
 }
 
 /* to swap padding for margin
@@ -361,5 +365,5 @@ sup.footnote {
 
 /* ease clickability */
 sup.footnote a {
-	padding: 0.3em;
+	padding: 0.1em 0.15em;
 }
