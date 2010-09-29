@@ -754,9 +754,10 @@ sub _DoAnchors {
 			#
 			$link_id=~ s/\§//g;
 			my $loc = $ENV{"ZETTELKASTEN"} || expand_tilde("~/Archiv/");
-			my $filename = `ls -C $loc | grep -o --colour=never "^${link_id}_.*"`;
+			my $filename = `ls -C "$loc" | grep -o --colour=never "^${link_id}_.*"`;
 			$filename =~ s/\n|\r//sg;
 			$filename =~ s/ /%20/g;
+			$loc      =~ s/ /%20/g;
 			$filename =~ s/=/%3D/g;
 			$filename =~ s/\+/%2B/g;
 			# $filename =~ s/\.md/\.html/;
