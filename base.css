@@ -78,8 +78,8 @@ h2, h3, h4, h5 { font-weight: normal; }
  * outline:none used with the pseudo-class :hover is to avoid outline when a user clicks on links
  * note that these last rules do not do anything in IE as this browser does not support "outline"
  */
-a:link {text-decoration: none;border-bottom: 1px solid blue;/*color: #000;*/}
-a:visited {border-bottom-color:fuchsia;}
+a:link {text-decoration: none;border-bottom: 1px solid #000;color: #000;}
+a:visited {}
 a:hover {border-bottom-color: transparent;}
 a:focus {text-decoration: none;}
 a:focus,:focus {outline: 1px dotted #000;}
